@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewData["Title"] = "Oops!";
+}
+
+<!-- Custom CSS -->
+<link href="~/css/style-error.css" rel='stylesheet' type='text/css' />
+
+<div class="page">
+    <div class="sixteen columns">
+        <h3>Something went wrong!</h3>
+        <h3>Please try again later. If the error persists, contact the owner.</h3>
+        <div style="margin-top:30px;">
+            <strong>Status code:</strong> <code>@this.Model.StatusCode</code>
+            @if (this.Model.ShowRequestId)
+            {
+                <br />
+                <strong>Request ID:</strong> <code>@this.Model.RequestId</code>
+            }
+        </div>
+    </div>
+</div>
+<div class="margin-top-50"></div>
+

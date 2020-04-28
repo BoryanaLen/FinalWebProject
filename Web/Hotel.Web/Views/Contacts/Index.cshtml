@@ -1,0 +1,86 @@
+﻿@model UserRequestViewModel
+
+@{
+    ViewData["Title"] = "Contacts";
+}
+
+
+
+<div class="page">
+    <div id="contact-bg">
+        <img src="~/pictures/welcome2.jpg" alt="">
+        <h2>Contacts</h2>
+    </div>
+    <br>
+
+    <div class="container shadow">
+        <partial name="~/Views/Contacts/_InfoMessagePartial.cshtml" />
+    </div>
+
+    <!-- Location -->
+    <div class="location agileits w3layouts">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-5 col-sm-5 agileits w3layouts location-grids location-grids-1 wow slideInLeft">
+                <address>
+                    <u>Address:</u>
+                    Velingrad, Bulgaria<br />
+                    <abbr title="Phone">Phone:</abbr>
+                    +359 123456789
+                </address>
+
+                <p>
+                    Be our guests! Do not hesitate to contact us if you want to make a reservation or
+                    if you have any questions! We have 5 single rooms, 10 double rooms,
+                    2 studios with unique forest views and 2 deluxe apartments.
+                    There is also a restaurant with unique cuisine for every taste.
+                </p>
+            </div>
+
+            <div class="col-md-6 col-sm-6 agileits w3layouts location-grids location-grids-2 wow slideInRight" id="contact-sheet-picture">
+                <div class="container shadow">
+                    <partial name="~/Views/Contacts/_MapPartial.cshtml" />
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+    <!-- //Location -->
+    <!-- Contact form -->
+    <div id="contact_form">
+        <div class="container mt-2 py-3 px-3" style="width:70%; margin-bottom:100px;">
+            <div class="font-weight-bold h4 text-center text-secondary" id="contact-bg" style="margin-bottom:20px;">
+                <h2 style="font-size:30px;">Contact form </h2>
+            </div>
+            <form asp-controller="Contacts" asp-action="Contact" method="post" style="margin-bottom:50px;">
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4">
+                        <label asp-for="Title">Title:</label>
+                        <input asp-for="Title" class="form-control" placeholder="Title" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-4">
+                        <label asp-for="Email">Email:</label>
+                        <input type="email" asp-for="Email" class="form-control" placeholder="email" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <label asp-for="Content">Content:</label>
+                        <textarea asp-for="Content" class="form-control" rows="3">Content</textarea>
+                        <span asp-validation-for="Content" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+                <div class="col-md-12 text-center" style="margin-bottom:50px;">
+                    <button type="submit" class="btn">Send</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,58 @@
+﻿@model AllUnSeenUsersRequestsViewModel
+
+@{
+    ViewData["Title"] = "Unseen Requests";
+}
+
+<link rel="stylesheet" href="~/css/style2.css" type="text/css" media="all">
+
+<div class="admin_page">
+    <h3 class="mobile-fondsize-20 text-muted text-center">@ViewData["Title"]</h3>
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var request in Model.UserRequests)
+                {
+                    <tr>
+                        <td data-label="RoomType"> @request.RequestDate.ToString("dd/MM/yyyy")</td>
+                        <td data-label="RoomType"> @request.Email</td>
+                        <td data-label="RoomType"> @request.Title</td>
+                        <td>
+                            <a asp-action="Read" asp-route-id="@request.Id" class="btn btn-primary btn-sm mobile-fondsize-11">Read</a>
+                            <a asp-action="Delete" asp-route-id="@request.Id" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    @if (Model.PagesCount > 0)
+    {
+        <div class="text-center">
+            <ul class="pagination">
+                @for (int i = 1; i <= Model.PagesCount; i++)
+                {
+                    if (i == Model.CurrentPage)
+                    {
+                        <li class="active"><a href="/Administration/UserRequests/UnSeen?page=@i">@i</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="/Administration/UserRequests/UnSeen?page=@i">@i</a></li>
+                    }
+                }
+            </ul>
+        </div>
+    }
+</div>
+
+

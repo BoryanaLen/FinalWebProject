@@ -1,0 +1,78 @@
+﻿@model AddPaymentInputModel
+
+@{
+    ViewData["Title"] = "Add Payment";
+    var paymentTypes = Model.ListOfPaymentTypes.Select(x => new SelectListItem(x.Name, x.Id));
+}
+
+<div class="admin_page">
+    <h3 class="mobile-fondsize-20 text-muted text-center">@ViewData["Title"]</h3>
+    <hr class="w-50" />
+    <form asp-controller="Payments" asp-action="Add" method="post" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-row">
+            <div class="form-group col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label asp-for="DateOfPayment" class="control-label"></label>
+                <input asp-for="DateOfPayment" class="form-control" />
+                <span asp-validation-for="DateOfPayment" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="Amount" class="control-label"></label>
+                <input  asp-for="Amount" class="form-control"/>
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-2"></div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label asp-for="PaymentType" class="control-label"></label>
+                <select asp-for="PaymentTypeId" asp-items="paymentTypes" class="form-control"></select>
+                <span asp-validation-for="PaymentTypeId" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-2"></div>
+        </div>
+
+        <table id="table_container">
+            <thead>
+                <tr>
+                    <th scope="col">Reservation No</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Total amount</th>
+                    <th scope="col">First name</th>
+                    <th scope="col">Last name</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var res in Model.ListOfNotPaidReservations)
+                {
+                    <tr>
+                        <td>@res.Id.Substring(0, 8)</td>
+                        <td>@res.CreatedOn.ToString("dd/MM/yyyy")</td>
+                        <td>@(res.TotalAmount)EUR</td>
+                        <td>@res.UserFirstName</td>
+                        <td>@res.UserLastName</td>
+                        <td>
+                            <input name="ReservationIds" type="checkbox" value="@res.Id" /> Add
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="form-row">
+            <div class="form-group col-md-2"></div>
+            <div class="form-group col-md-4 text-center">
+                <button type="submit" value="" class="btn btn-primary">Add</button>
+            </div>
+            <div class="form-group col-md-4 text-center">
+                <a asp-area="Administration" asp-controller="Rooms" asp-action="All" class="btn btn-primary">Back</a>
+            </div>
+            <div class="form-group col-md-2"></div>
+        </div>
+    </form>
+</div>
+

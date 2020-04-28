@@ -1,0 +1,39 @@
+﻿@model DeleteSpecialOfferViewModel
+
+@{
+    ViewData["Title"] = "Delete Special Offer";
+}
+
+    <div>
+        <h3 class="mobile-fondsize-20 text-muted text-center">@ViewData["Title"]</h3>
+        <hr class="w-50" />
+        <div class="container">
+            <form asp-controller="SpecialOffers" asp-action="Delete" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="Title" class="control-label"></label>
+                        <input asp-for="Title" disabled="disabled" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="Content" class="control-label"></label>
+                        <textarea asp-for="Content" disabled="disabled" class="form-control"></textarea>
+                        <span asp-validation-for="Content" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="ShortContent"></label>
+                        <textarea asp-for="ShortContent" disabled="disabled" class="form-control"></textarea>
+                        <span asp-validation-for="ShortContent" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-group text-center">
+                    <button type="submit" value="" class="btn btn-danger">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+

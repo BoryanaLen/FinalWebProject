@@ -1,0 +1,60 @@
+﻿@model AllPaymentsViewModel
+
+@{
+    ViewData["Title"] = "All Payments";
+}
+
+<link rel="stylesheet" href="~/css/style2.css" type="text/css" media="all">
+
+<div class="admin_page">
+    <h3 class="mobile-fondsize-20 text-muted text-center">@ViewData["Title"]</h3>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Date</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Payment type</th>
+                <th scope="col">Reservation numbers</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var payment in Model.Payments)
+            {
+            <tr>
+                <td> @payment.DateOfPayment.ToString("dd/MM/yyyy")</td>
+                <td> @payment.Amount</td>
+                <td> @payment.PaymentTypeName</td>
+                <td> @payment.ReservationNumbers.Substring(0, 8)</td>
+                <td>
+                    @*<a asp-action="Edit" asp-route-id="@payment.Id" class="btn btn-primary btn-sm mobile-fondsize-11">Edit</a>*@
+                    <a asp-action="Delete" asp-route-id="@payment.Id" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+    @if (Model.PagesCount > 0)
+    {
+        <div class="text-center">
+            <ul class="pagination">
+                @for (int i = 1; i <= Model.PagesCount; i++)
+                {
+                    if (i == Model.CurrentPage)
+                    {
+                        <li class="active"><a href="/Administration/Payments/All?page=@i">@i</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="/Administration/Payments/All?page=@i">@i</a></li>
+                    }
+                }
+            </ul>
+        </div>
+    }
+</div>
+
+
+
+

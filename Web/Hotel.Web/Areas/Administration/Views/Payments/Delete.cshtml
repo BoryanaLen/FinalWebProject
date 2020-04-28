@@ -1,0 +1,49 @@
+﻿@model DeletePaymentViewModel
+
+@{
+    ViewData["Title"] = "Delete Payment";
+}
+
+<div class="admin_page">
+    <h3 class="mobile-fondsize-20 text-muted text-center">@ViewData["Title"]</h3>
+    <hr class="w-50" />
+    <form asp-controller="Payments" asp-action="Delete" method="post" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-row">
+            <div class="form-group col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label asp-for="DateOfPayment" class="control-label"></label>
+                <input asp-for="DateOfPayment"  disabled="disabled" class="form-control" />
+                <span asp-validation-for="DateOfPayment" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="Amount" class="control-label"></label>
+                <input asp-for="Amount"  disabled="disabled" class="form-control" />
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-2"></div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label asp-for="PaymentTypeName" class="control-label"></label>
+                <input asp-for="PaymentTypeName" disabled="disabled" class="form-control" />
+                <span asp-validation-for="PaymentTypeName" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-2"></div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-2"></div>
+            <div class="form-group col-md-4 text-center">
+                <button type="submit" value="" class="btn btn-danger">Delete</button>
+            </div>
+            <div class="form-group col-md-4 text-center">
+                <a asp-area="Administration" asp-controller="Payments" asp-action="All" class="btn btn-primary">Back</a>
+            </div>
+            <div class="form-group col-md-2"></div>
+        </div>
+    </form>
+</div>
+

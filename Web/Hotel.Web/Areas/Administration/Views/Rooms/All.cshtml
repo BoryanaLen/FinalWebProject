@@ -1,0 +1,65 @@
+﻿@model AllRoomsViewModel
+
+@{
+    ViewData["Title"] = "All Rooms";
+}
+
+
+<link rel="stylesheet" href="~/css/style2.css" type="text/css" media="all">
+
+<div class="admin_page">
+    <h3 class="mobile-fondsize-20 text-muted text-center">@ViewData["Title"]</h3>
+    <div class="table-responsive">
+        <table >
+            <thead>
+                <tr>
+                    <th scope="col">Image</th>
+                    <th scope="col">Number</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Capacity Adults</th>
+                    <th scope="col">Capacity Kids</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var room in Model.Rooms)
+                {
+                    <tr>
+                        <td data-label="Image">
+                            <img id="img-room-view" src="@room.RoomTypeImage">
+                        </td>
+                        <td> @room.RoomNumber</td>
+                        <td> @room.RoomTypeName</td>
+                        <td> @(room.RoomTypePrice)BGN</td>
+                        <td> @room.RoomTypeCapacityAdults</td>
+                        <td> @room.RoomTypeCapacityKids</td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@room.Id" class="btn btn-primary btn-sm mobile-fondsize-11">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@room.Id" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+    @if (Model.PagesCount > 0)
+    {
+        <div class="text-center">
+            <ul class="pagination">
+                @for (int i = 1; i <= Model.PagesCount; i++)
+                {
+                    if (i == Model.CurrentPage)
+                    {
+                        <li class="active"><a href="/Administration/Rooms/All?page=@i">@i</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="/Administration/Rooms/All?page=@i">@i</a></li>
+                    }
+                }
+            </ul>
+        </div>
+    }

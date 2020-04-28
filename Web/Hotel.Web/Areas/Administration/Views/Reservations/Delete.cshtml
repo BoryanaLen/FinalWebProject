@@ -1,0 +1,71 @@
+﻿@model DeleteReservationViewModel
+
+@{
+    ViewData["Title"] = "Delete Reservation";
+}
+
+<div>
+    <h3 class="mobile-fondsize-20 text-muted text-center">@ViewData["Title"]</h3>
+    <hr class="w-50" />
+    <div class="container">
+        <form asp-controller="Reservations" asp-action="Delete" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-row">
+                <div class="form-group col-md-2"></div>
+                <div class="form-group col-md-4 agileits w3layouts slideInLeft wow animated">
+                    <label asp-for="UserFirstName" class="control-label"></label>
+                    <input asp-for="UserFirstName" disabled="disabled" class="form-control" />
+                    <span asp-validation-for="UserFirstName" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-4 agileits w3layouts slideInRight wow animated">
+                    <label asp-for="UserLastName" class="control-label"></label>
+                    <input asp-for="UserLastName" disabled="disabled" class="form-control" />
+                    <span asp-validation-for="UserLastName" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-2"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <label asp-for="StartDate" class="control-label"></label>
+                    <input asp-for="StartDate" disabled="disabled" class="form-control" />
+                    <span asp-validation-for="StartDate" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="EndDate" class="control-label"></label>
+                    <input asp-for="EndDate" disabled="disabled" class="form-control" />
+                    <span asp-validation-for="EndDate" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-2"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-2"></div>
+                <div class="form-group col-md-4">
+                    <label asp-for="Adults" class="control-label"></label>
+                    <input asp-for="Adults" disabled="disabled" class="form-control" />
+                    <span asp-validation-for="Adults" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-4">
+                    <label asp-for="Kids" class="control-label"></label>
+                    <input asp-for="Kids" disabled="disabled" class="form-control" />
+                    <span asp-validation-for="Kids" class="text-danger"></span>
+                </div>
+                <div class="form-group col-md-2"></div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-2"></div>
+                <div class="form-group col-md-4 text-center">
+                    <button type="submit" value="" class="btn btn-danger">Delete</button>
+                </div>
+                <div class="form-group col-md-4 text-center">
+                    <a asp-area="Administration" asp-controller="Rooms" asp-action="All" class="btn btn-primary">Back</a>
+                </div>
+                <div class="form-group col-md-2"></div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+

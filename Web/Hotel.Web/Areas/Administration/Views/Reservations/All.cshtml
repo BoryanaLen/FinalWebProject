@@ -1,0 +1,60 @@
+﻿@model AllReservationsViewModel
+
+@{
+    ViewData["Title"] = "All Reservations";
+}
+
+<link rel="stylesheet" href="~/css/style2.css" type="text/css" media="all">
+
+<div class="admin_page">
+    <h3 class="mobile-fondsize-20 text-muted text-center">@ViewData["Title"]</h3>
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Start Date</th>
+                    <th scope="col">End Date</th>
+                    <th scope="col">Total Days</th>
+                    <th scope="col">Total Amount</th>
+                    <th scope="col">Guest</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var reservation in Model.Reservations)
+                {
+                <tr>
+                    <td data-label="Start date"> @Convert.ToString(string.Format("{0:dd/MM/yyyy}", reservation.StartDate))</td>
+                    <td data-label="End date"> @Convert.ToString(string.Format("{0:dd/MM/yyyy}", reservation.EndDate))</td>
+                    <td data-label="Total Days">@reservation.TotalDays</td>
+                    <td data-label="Total Amount">@(reservation.TotalAmount)EUR</td>
+                    <td data-label="">@reservation.UserFullName</td>
+                    <td>
+                        @*<a asp-action="Edit" asp-route-id="@reservation.Id" class="btn btn-primary btn-sm mobile-fondsize-11">Edit</a>*@
+                        <a asp-action="Delete" asp-route-id="@reservation.Id" class="btn btn-danger btn-sm">Delete</a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    @if (Model.PagesCount > 0)
+    {
+        <div class="text-center">
+            <ul class="pagination">
+                @for (int i = 1; i <= Model.PagesCount; i++)
+                {
+                    if (i == Model.CurrentPage)
+                    {
+                        <li class="active"><a href="/Administration/Reservations/All?page=@i">@i</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="/Administration/Reservations/All?page=@i">@i</a></li>
+                    }
+                }
+            </ul>
+        </div>
+    }
+</div>

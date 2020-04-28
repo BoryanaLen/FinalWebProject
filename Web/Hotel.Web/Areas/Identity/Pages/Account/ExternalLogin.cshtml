@@ -1,0 +1,119 @@
+﻿@page
+@model ExternalLoginModel
+@{
+    ViewData["Title"] = "";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+
+<!-- Registration form -->
+<div class="exreg agileits w3layouts">
+    <div class="container-contact-form">
+
+        <div class="register agileits w3layouts">
+            <div>
+                <div role="form" class="wpcf7" id="wpcf7-f258-p331-o1" lang="bg-BG" dir="ltr">
+                    <div class="screen-reader-response"></div>
+                    <form asp-page-handler="Confirmation" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                        <div style="display: none;">
+                            <input type="hidden" name="_wpcf7" value="258">
+                            <input type="hidden" name="_wpcf7_version" value="5.1.1">
+                            <input type="hidden" name="_wpcf7_locale" value="bg_BG">
+                            <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f258-p331-o1">
+                            <input type="hidden" name="_wpcf7_container_post" value="331">
+                            <input type="hidden" name="g-recaptcha-response" value="">
+                        </div>
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="exreg agileits w3layouts">
+                            <div class="container">
+                                <br />
+                                <h2> РЕГИСТРАЦИЯ </h2>
+                                <hr />
+                                <p class="text-info">
+                                    You've successfully authenticated with <strong>@Model.LoginProvider</strong>.
+                                    Please enter an email address for this site below and click the Register button to finish
+                                    logging in.
+                                </p>
+
+                                <div class="register agileits w3layouts">
+                                    <div class="place wow  agileits w3layoutsslideInLeft animated animated" style="visibility: visible;">
+                                        <div class="dropdown-button agileits w3layouts">
+                                            <div class="dropdown agileits w3layouts slideInRight wow animated animated" tabindex="10" data-settings="{&quot;wrapperClass&quot;:&quot;flat&quot;}">
+                                                <br>
+                                                <h4> <label asp-for="Input.FirsName"></label> </h4>
+                                                <input asp-for="Input.FirsName" class="form-control" />
+                                                <span asp-validation-for="Input.FirsName" class="text-danger"></span>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="dropdown-button agileits w3layouts">
+                                            <div class="dropdown agileits w3layouts slideInRight wow animated animated" tabindex="10" data-settings="{&quot;wrapperClass&quot;:&quot;flat&quot;}">
+                                                <br>
+                                                <h4><label asp-for="Input.LastName"></label></h4>
+                                                <input asp-for="Input.LastName" class="form-control" />
+                                                <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="dropdown-button agileits w3layouts">
+                                            <div class="dropdown agileits w3layouts slideInRight wow animated animated" tabindex="10" data-settings="{&quot;wrapperClass&quot;:&quot;flat&quot;}">
+                                                <br>
+                                                <h4><label asp-for="Input.Address"></label></h4>
+                                                <input asp-for="Input.Address" class="form-control" />
+                                                <span asp-validation-for="Input.Address" class="text-danger"></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="dropdown-button agileits w3layouts">
+                                            <div class="dropdown agileits w3layouts slideInRight wow animated animated" tabindex="10" data-settings="{&quot;wrapperClass&quot;:&quot;flat&quot;}">
+                                                <br>
+                                                <h4><label asp-for="Input.PhoneNumber"></label></h4>
+                                                <input asp-for="Input.PhoneNumber" class="form-control" />
+                                                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                                            </div>
+                                        </div>
+
+                                        <div class="dropdown-button agileits w3layouts">
+                                            <div class="dropdown agileits w3layouts slideInRight wow animated animated" tabindex="10" data-settings="{&quot;wrapperClass&quot;:&quot;flat&quot;}">
+                                                <br>
+                                                <h4><label asp-for="Input.Email"></label></h4>
+                                                <input asp-for="Input.Email" class="form-control" />
+                                                <span asp-validation-for="Input.Email" class="text-danger"></span>
+                                            </div>
+                                        </div>
+
+                                        <br />
+                                        <br />
+
+                                        <div class="wow agileits w3layouts slideInLeft animated animated" id="btn-form" style="visibility: visible; animation-name: slideInLeft;">
+                                            <input type="submit" value="Register" class="wpcf7-form-control wpcf7-submit">
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wpcf7-response-output wpcf7-display-none"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- //Registration form -->
+
+<div class="contact agileits w3layouts">
+    <div class="container">
+
+        <h2 class="wow agileits w3layouts slideInLeft">Save time on future reservations</h2>
+        <p class="contact-p wow agileits w3layouts slideInLeft">Save time on future reservations by creating a new account with your personal data. Register now via the form above.</p>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

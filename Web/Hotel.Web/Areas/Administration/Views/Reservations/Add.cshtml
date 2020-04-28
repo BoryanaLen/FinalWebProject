@@ -1,0 +1,73 @@
+﻿@model AddReservationViewModel
+
+@{
+    ViewData["Title"] = "Add Reservation";
+   // var roomTypes = Model.ListOfRoomTypes.Select(x => new SelectListItem(x.Name, x.Id));
+    var paymentTypes = Model.ListOfPaymentTypes.Select(x => new SelectListItem(x.Name, x.Id));
+}
+
+<div class="admin_page">
+    <h3 class="mobile-fondsize-20 text-muted text-center">@ViewData["Title"]</h3>
+    <hr class="w-50" />
+    <form asp-controller="Reservations" asp-action="Add" method="post" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-row">
+            <div class="form-group col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label asp-for="StartDate" class="control-label"></label>
+                <input asp-for="StartDate" class="form-control" />
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="EndDate" class="control-label"></label>
+                <input asp-for="EndDate" class="form-control" />
+                <span asp-validation-for="EndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-2"></div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label asp-for="Adults" class="control-label"></label>
+                <input asp-for="Adults" class="form-control" />
+                <span asp-validation-for="Adults" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="Kids" class="control-label"></label>
+                <input asp-for="Kids" class="form-control" />
+                <span asp-validation-for="Kids" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-2"></div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label asp-for="PaymentTypeId" class="control-label"></label>
+                <select asp-for="PaymentTypeId" asp-items="paymentTypes" class="form-control"></select>
+                <span asp-validation-for="PaymentTypeId" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-4">
+               
+            </div>
+            <div class="form-group col-md-2"></div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-2"></div>
+            <div class="form-group col-md-8">
+               
+            </div>
+            <div class="form-group col-md-2"></div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-2"></div>
+            <div class="form-group col-md-4 text-center">
+                <button type="submit" value="" class="btn btn-primary">Add</button>
+            </div>
+            <div class="form-group col-md-4 text-center">
+                <a asp-area="Administration" asp-controller="Rooms" asp-action="All" class="btn btn-primary">Back</a>
+            </div>
+            <div class="form-group col-md-2"></div>
+        </div>
+    </form>
+</div>
+

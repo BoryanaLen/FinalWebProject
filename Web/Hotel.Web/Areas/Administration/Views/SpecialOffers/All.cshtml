@@ -1,0 +1,53 @@
+﻿@model AllSpecialOffersViewModel
+
+<link rel="stylesheet" href="~/css/style2.css" type="text/css" media="all">
+
+<h2>All Special Offers</h2>
+
+
+<div class="admin_page">
+    <h3 class="mobile-fondsize-20 text-muted text-center">@ViewData["Title"]</h3>
+    <div class="table-responsive">
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Short Content</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var specialOffer in Model.SpecialOffers)
+                {
+                    <tr>
+                        <td data-label="RoomType"> @specialOffer.Title</td>
+                        <td data-label="Price">@(specialOffer.ShortContent)</td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@specialOffer.Id" class="btn btn-primary btn-sm mobile-fondsize-11">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@specialOffer.Id" class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+    @if (Model.PagesCount > 0)
+    {
+        <div class="text-center">
+            <ul class="pagination">
+                @for (int i = 1; i <= Model.PagesCount; i++)
+                {
+                    if (i == Model.CurrentPage)
+                    {
+                        <li class="active"><a href="/Administration/SpecialOffers/All?page=@i">@i</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="/Administration/SpecialOffers/All?page=@i">@i</a></li>
+                    }
+                }
+            </ul>
+        </div>
+    }

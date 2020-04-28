@@ -1,0 +1,35 @@
+﻿@using Syncfusion.EJ2
+
+<div class="control-section" style="margin:10px">
+    <div class="content-wrapper">
+        <ejs-schedule id="schedule" width="100%" currentView="TimelineMonth" selectedDate="DateTime.Now">
+            <e-schedule-views>
+                <e-schedule-view option="TimelineDay"></e-schedule-view>
+                <e-schedule-view option="TimelineMonth"></e-schedule-view>
+            </e-schedule-views>
+            <e-schedule-group resources="@ViewBag.Resources"></e-schedule-group>
+            <e-schedule-resources>
+                <e-schedule-resource dataSource="@ViewBag.Projects" field="ProjectId" title="Choose Project" name="Projects" textField="text" idField="id" colorField="color"></e-schedule-resource>
+                <e-schedule-resource dataSource="@ViewBag.Categories" field="TaskId" title="Category" name="Categories" textField="text" idField="id" groupIDField='groupId' colorField="color" allowMultiple="true"></e-schedule-resource>
+            </e-schedule-resources>
+            <e-schedule-eventsettings dataSource="@ViewBag.datasource">
+                <e-eventsettings-fields>
+                    <e-field-subject name="Subject" title="Summary"></e-field-subject>
+                    <e-field-description name="Description" title="Comments"></e-field-description>
+                </e-eventsettings-fields>
+            </e-schedule-eventsettings>
+        </ejs-schedule>
+    </div>
+</div>
+<style type="text/css">
+    .e-schedule:not(.e-device) .e-agenda-view .e-content-wrap table td:first-child {
+        width: 90px;
+    }
+
+    .e-schedule .e-agenda-view .e-resource-column {
+        width: 100px;
+    }
+    #schedule {
+        height: 520px !important;
+    }
+</style>

@@ -1,0 +1,31 @@
+﻿@model DetailsSpecialOfferViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container page" id="special_offer_details_container">
+
+    <h2 id="single-head"> @Model.Title</h2>
+
+    <div class="col-md-6 col-sm-6 agileits w3layouts location-grids location-grids-1 wow slideInLeft animated" style="visibility: visible; animation-name: slideInLeft;">
+        <section class="main-bg-color main-page-container">
+            <div class="inner-box container default-single-page">
+                <div class="page-content-section clearfix">
+                    <p>@Model.ShortContent</p>
+                </div>
+            </div>
+        </section>
+        <p>&nbsp;</p>
+        <section class="main-bg-color main-page-container">
+            <div class="inner-box container default-single-page">
+                <div class="page-content-section clearfix">
+                    <p>@Model.Content</p>
+                </div>
+            </div>
+        </section>
+        <p>&nbsp;</p>
+        <a asp-area="" asp-controller="SpecialOffers" asp-action="All" class="btn">Back</a>
+    </div>
+</div>
+

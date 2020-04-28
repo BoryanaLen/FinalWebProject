@@ -1,0 +1,51 @@
+﻿@model DeleteRoomViewModel
+
+@{
+    ViewData["Title"] = "Delete Room";
+}
+
+    <div>
+        <h3 class="mobile-fondsize-20 text-muted text-center">@ViewData["Title"]</h3>
+        <hr class="w-50" />
+        <div class="container">
+            <form asp-controller="Rooms" asp-action="Delete" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-row">
+                    <div class="form-group col-md-2"></div>
+                    <div class="form-group col-md-4">
+                        <label asp-for="RoomNumber" class="control-label"></label>
+                        <input asp-for="RoomNumber" disabled="disabled" class="form-control" />
+                        <span asp-validation-for="RoomNumber" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label asp-for="RoomTypeName" class="control-label"></label>
+                        <input asp-for="RoomTypeName" disabled="disabled" class="form-control" />
+                        <span asp-validation-for="RoomTypeName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-2"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-2"></div>
+                    <div class="form-group col-md-8">
+                        <label asp-for="Description" class="control-label"></label>
+                        <textarea asp-for="Description" disabled="disabled" class="form-control"> </textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-2"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-2"></div>
+                    <div class="form-group col-md-4 text-center">
+                        <button type="submit" value="" class="btn btn-danger">Delete</button>
+                    </div>
+                    <div class="form-group col-md-4 text-center">
+                        <a asp-area="Administration" asp-controller="Rooms" asp-action="All" class="btn btn-primary">Back</a>
+                    </div>
+                    <div class="form-group col-md-2"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+

@@ -1,0 +1,95 @@
+﻿@model AddRoomTypeInputModel
+
+@{
+    ViewData["Title"] = "Add Room Type";
+}
+
+<div class="container">
+    <h3 class="mobile-fondsize-20 text-muted text-center">@ViewData["Title"]</h3>
+    <hr />
+    <form asp-controller="RoomTypes" asp-action="Add" method="post" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-row">
+            <div class="form-group col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-2"></div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-2"></div>
+            <div class="form-group col-md-4">
+                <label asp-for="CapacityAdults" class="control-label"></label>
+                <input asp-for="CapacityAdults" class="form-control" />
+                <span asp-validation-for="CapacityAdults" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="CapacityKids" class="control-label"></label>
+                <input asp-for="CapacityKids" class="form-control" />
+                <span asp-validation-for="CapacityKids" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-2"></div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-2"></div>
+            <div class="form-group col-md-8">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control"> </textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-2"></div>
+        </div>
+
+        <div class="form-row" style="margin-bottom:20px;">
+            <div class="form-group col-md-2"></div>
+            <div class="form-group col-md-4">
+                <div class="form-group">
+                    <label asp-for="RoomImage" class="control-label"></label>
+                    <input asp-for="RoomImage" class="form-control" multiple onchange="DisplayImage(this)" />
+                    <span asp-validation-for="RoomImage" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <div class="form-group">
+                    <img id="imgRoom" style="border:solid" />
+                </div>
+            </div>
+            <div class="form-group col-md-2"></div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-2"></div>
+            <div class="form-group col-md-4 text-center">
+                <button type="submit" value="" class="btn btn-primary">Add</button>
+            </div>
+            <div class="form-group col-md-4 text-center">
+                <a asp-area="Administration" asp-controller="RoomTypes" asp-action="All" class="btn btn-primary">Back</a>
+            </div>
+            <div class="form-group col-md-2"></div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+    });
+
+    function DisplayImage(result) {
+        if (result.files && result.files[0]) {
+            var fileReader = new FileReader();
+            fileReader.onload = function (e) {
+                $("#imgRoom").attr("src", e.target.result);
+            }
+            fileReader.readAsDataURL(result.files[0]);
+        }
+    }
+</script>

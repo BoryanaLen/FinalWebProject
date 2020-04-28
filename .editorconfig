@@ -1,0 +1,7 @@
+﻿[*.cs]
+
+# SA1117: Parameters should be on same line or separate lines
+dotnet_diagnostic.SA1117.severity = none
+
+# SA1401: Fields should be private
+dotnet_diagnostic.SA1401.severity = none

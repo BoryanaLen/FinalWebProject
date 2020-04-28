@@ -1,0 +1,37 @@
+﻿@model AllSpecialOffersViewModel
+
+@{
+    ViewData["Title"] = "Special Offers";
+}
+
+<div class="page" id="special_offers_container">
+
+    <h2 style="margin-bottom:30px; color:#0e646c">Special Offers</h2>
+
+    <div class="details-grids agileits w3layouts" style="padding:20px;">
+
+        @foreach (var offer in Model.SpecialOffers)
+        {
+            <div class="col-md-2 col-sm-2 details-grid agileits w3layouts details-grid-1 wow slideInUp animated" style="visibility: visible; animation-name: slideInUp;">
+                <div class=" details-grid1 agileits w3layouts" id="specila_offer" style="background:#e8f9fb">
+                    <div class="details-grid-image agileits w3layouts">
+                        <img src="~/pictures/special_offer.jpg" alt="Agileits W3layouts">
+                    </div>
+                    <p>&nbsp;</p>
+                    <div class="details-grid-info agileits w3layouts">
+                        <h4 style="color:#1dc8d9">@offer.Title</h4>
+                    </div>
+                    <div class="details-grid-info agileits w3layouts">
+                        <p>@offer.ShortContent</p>
+                    </div>
+                    <a asp-action="Details" asp-route-id="@offer.Id" class="btn">more ...</a>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        }
+
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+
